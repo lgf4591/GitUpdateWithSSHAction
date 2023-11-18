@@ -10,7 +10,7 @@ inputs:
     default: 'main'
   commit: 
     description: "Define the message to commit."
-    default: 'github actions auto updated at $(date '+%Y-%m-%d %H:%M:%S')'
+    default: "github actions auto updated at $(date '+%Y-%m-%d %H:%M:%S')"
 
 runs:
   using: "composite"
