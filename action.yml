@@ -4,15 +4,12 @@ description: "Update repo With SSH"
 inputs:
   shell: 
     description: "Define the shell to run command. Default: bash"
-    required: true
     default: 'bash'
   branch: 
     description: "Define the branch to update. Default: main"
-    required: true
     default: 'main'
   commit: 
     description: "Define the message to commit."
-    required: true
     default: 'github actions auto updated at $(date '+%Y-%m-%d %H:%M:%S')'
 
 runs:
