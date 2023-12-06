@@ -2,6 +2,9 @@ name: "Update repo With SSH"
 description: "Update repo With SSH"
 
 inputs:
+  token:
+    description: "Github token to auto commit"
+    required: true
   shell:
     description: "Define the shell to run command. Default: bash"
     default: 'bash'
@@ -20,7 +23,7 @@ runs:
     run: |
       git config --local user.email "lgf4591@outlook.com"
       git config --local user.name "github-action"
-      git remote set-url origin https://${{ github.actor }}:${{ secrets.ACTION_TOKEN }}@github.com/${{ github.repository }}
+      git remote set-url origin https://${{ github.actor }}:${{ inputs.token }}@github.com/${{ github.repository }}
       git add .
       git commit --allow-empty -m "${{ inputs.commit }}"
       git push origin ${{ inputs.branch }}
