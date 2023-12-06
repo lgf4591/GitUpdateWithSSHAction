@@ -2,13 +2,13 @@ name: "Update repo With SSH"
 description: "Update repo With SSH"
 
 inputs:
-  shell: 
+  shell:
     description: "Define the shell to run command. Default: bash"
     default: 'bash'
-  branch: 
+  branch:
     description: "Define the branch to update. Default: main"
     default: 'main'
-  commit: 
+  commit:
     description: "Define the message to commit."
     default: "github actions auto updated at $(date '+%Y-%m-%d %H:%M:%S')"
 
@@ -18,7 +18,9 @@ runs:
   - name: Update a repo With SSH
     shell: ${{ inputs.shell }}
     run: |
-      git pull
+      git config --local user.email "lgf4591@outlook.com"
+      git config --local user.name "github-action"
+      git remote set-url origin https://${{ github.actor }}:${{ secrets.ACTION_TOKEN }}@github.com/${{ github.repository }}
       git add .
       git commit --allow-empty -m "${{ inputs.commit }}"
       git push origin ${{ inputs.branch }}
